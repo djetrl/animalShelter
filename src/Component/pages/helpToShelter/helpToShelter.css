@@ -1,0 +1,313 @@
+.none {
+    display: none;
+}
+
+/* form */
+
+.pay-form {
+    padding: 84px 0 123px;
+}
+
+.pay-form__inner {
+    background-color: #E4E4E4;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+.pay-form__requisites__title {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 31px;
+    padding: 0 0 62px;
+}
+
+.pay-form__requisites__form__item {
+    position: relative;
+    margin: 0 0 60px;
+    display: inline-block;
+    padding: 0 30px 0 0;
+}
+
+.pay-form__requisites__form__item:not(.pay-form__requisites__form__item--checkbox):after {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 2px;
+    bottom: -8px;
+    left: 0;
+}
+
+.pay-form__requisites__form__item.pay-form__requisites__form__item--focus:after {
+    background-color: #36B1D7;
+}
+
+label {
+    
+    top: 0;
+    left: 0;
+    color: #75786E;
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    transition: all 0.1s ease-out;
+}
+.pay-form label {
+  position: absolute;
+}
+.label-focus {
+    font-size: 12px;
+    line-height: 19px;
+    top: -27px;
+    transition: all 0.1s ease-out;
+}
+
+.pay-form__requisites__form__img {
+    margin: 0 8px 0 0;
+    max-width: 25px;
+    max-height: 25px;
+    transition: all 0.1s ease-out;
+}
+
+.label-focus img {
+    max-width: 17px;
+    max-height: 17px;
+    transition: all 0.1s ease-out;
+
+}
+
+.inputForHelpToShelter {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+    color: #36B1D7;
+}
+.error{
+  color:red
+}
+.pay-form__requisites__form__item.pay-form__requisites__form__item_error--focus:after {
+  background-color: red;
+}
+
+.pay-form__requisites__form--name {
+    min-width: 411px;
+}
+
+.pay-form__requisites__form__item--cvc {
+    max-width: 103px;
+}
+
+.pay-form__requisites__form__item--card-number {
+    min-width: 278px;
+}
+
+.pay-form__requisites__form__item--nickname {
+    min-width: 278px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+.pay-form__requisites__form--sum {
+    max-width: 200px;
+}
+
+.pay-form__requisites__form__item--checkbox label {
+    left: 45px;
+    white-space: normal;
+    transform: translateY(-10px);
+}
+
+input[type="checkbox"]:before {
+    content: "";
+    position: absolute;
+    min-height: 35px;
+    min-width: 35px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #36B1D7;
+    left: 0;
+    top: 0;
+}
+
+.CheckBoxActive:before {
+    background-image: url("./../../img/icons/checkMark.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pay-form__requisites__form--card {
+}
+
+.pay-form__requisites__form--card,
+.pay-form__requisites__form--nickname{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.pay-form__requisites__form--nickname {
+}
+
+.pay-form__requisites__form--sum {
+}
+
+.submit {
+    display: block;
+    background: #D9D9D9;
+    padding: 10px 46px;
+}
+
+.submit:active {
+    background: #36B1D7;
+    color: white;
+}
+
+/* form statistic*/
+
+.pay-form__statistics {
+    background-color: #D9D9D9;
+    max-width: 400px;
+    min-height: 487px;
+    text-align: center;
+    padding: 55px 42px 46px;
+}
+
+.pay-form__statistics__title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    padding: 0 0 22px;
+}
+
+
+
+.pay-form__statistics--sum {
+    padding: 0 0 22px;
+}
+
+.pay-form__statistics--chart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pay-form__statistics--min {
+}
+
+.pay-form__statistics--max {
+}
+
+.pay-form__statistics__text {
+    max-width: 322px;
+    padding: 54px 0 0;
+}
+
+/* chart */
+
+.chart {
+    position: relative;
+    margin: 15px 0 0;
+}
+
+.chart-all {
+    width: 300px;
+    height: 30px;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.chart-donated {
+    position: absolute;
+    width: 0px;
+    height: 30px;
+    background: #36B1D7;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease-out;
+}
+
+
+/* main sponsors */
+
+.main-sponsors {
+    margin: 0 0 71px;
+}
+
+.main-sponsors__title {
+    margin: 0 0 94px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    position: relative;
+}
+
+h2.title:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 271px;
+    background-color: #36B1D7;
+    bottom: -18px;
+    left: calc( 50% - 135.5px );
+}
+
+.main-sponsors__content {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr;
+    row-gap: 50px;
+    column-gap: 50px;
+}
+
+.main-sponsors__item {
+    background-color: #E4E4E4;
+    padding: 50px;
+}
+
+.main-sponsors__item:not(:nth-child(3)) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.main-sponsors__item:nth-child(3) {
+    grid-column: 2 / 2;
+    grid-row: 1 / 3;
+}
+
+.main-sponsors__item:nth-child(3) .main-sponsors__img {
+    margin: 0 0 50px;
+}
+
+.main-sponsors__item:nth-child(4) {
+    grid-column: 1 / 3;
+    grid-row: 3 / 3;
+}
+
+.main-sponsors__img {
+    border-radius: 5px;
+    border: 0.5px solid #8F8F8F;
+    min-height: 250px;
+    min-width: 250px;
+}
+
+.main-sponsors__text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+}
