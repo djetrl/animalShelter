@@ -8,16 +8,15 @@ const setContent = (process, Component, props)=>{
 switch(process){
   case 'waiting':
       return <Loading/>;
-      break;
+
   case 'loading':
         return <Loading/>;
-        break;
+
   case 'confirmed':
         return <Component {...props} />;
-        break;
+
   case 'error': 
-        return <ErrorMessage/>;
-        break;      
+        return <ErrorMessage/>;    
   default: 
           throw new Error('Unexpected process state');
 }

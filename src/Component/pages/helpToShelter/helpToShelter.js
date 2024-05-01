@@ -66,9 +66,11 @@ const HelpToShelter = () =>{
     });
     useEffect(()=>{
       const percent = +allDonatedMoney / +maxMoney;
-
-
-      setPercentLine(  (300 * percent) + "px");
+      if(percent <=  1){  
+        setPercentLine(  (300 * percent) + "px");
+      }else{ 
+        setPercentLine(  (300 * 1) + "px");
+      }
 
 
     }, [allDonatedMoney])

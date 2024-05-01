@@ -4,9 +4,8 @@ import { Component } from "react";
 
 class Sliders  extends Component {
 
-s
-  render(){
 
+  render(){
       return(
           <section className="slider">
           <h1 className="slider__title">Те, Кому вы можете помочь!</h1>

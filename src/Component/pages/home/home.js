@@ -8,35 +8,33 @@ import setContent from "../../../utils/setContent";
 
 const Home = ()=>{
     const [animal, setAnimal] = useState([]);
-  const {getAnimal, clearError, process, setProcess}= useServices();
+    const {getAnimal, clearError, process, setProcess}= useServices();
 
-      
+
   useEffect(()=>{
     updateAnimal();
    },[])
 
-    const updateAnimal = () => {
-        clearError();
-        getAnimal()
-            .then(onAnimalLoaded)
-            .then(()=>setProcess('confirmed'));
-    }
+ 
+
+  const updateAnimal = () => {
+    clearError();
+    getAnimal()
+      .then(onAnimalLoaded)
+      .then(()=>setProcess('confirmed'));
+  }
 
   const onAnimalLoaded = (data) => {
-      setAnimal(data )
-   }
-
+    setAnimal([...data] )
+  }
 
 
 
  
   const renderSlider = (arr, arrLength)=>{
-
         let counter = 0;
-    
-        
         const data = arr.map(({photoPath,decrtiption, name, id} )=>{
-            if(counter !== arrLength){
+            if(counter < arrLength){
               counter++;
               return(
                 <div className="slider__item" key={id}>
@@ -50,13 +48,12 @@ const Home = ()=>{
                 )
                
             }else{
-                return;
+                return '';
             }
         })
-
+    
         
         return  (
-
           <Sliders settings={settings} >
                 {data}
           </Sliders>
@@ -70,18 +67,20 @@ const Home = ()=>{
 
     var settings = {
       slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: false,
     };
 
-    
     return(
       <main className="main">
-          <Helmet>
-              <meta
-                name="description"
-                content='home page of the animal shelter "Good paws"' />
-              <title>Добрые лапки</title>
-          </Helmet>
-            {setContent(process, ()=>renderSlider(animal,6)) }
+            <Helmet>
+                <meta
+                  name="description"
+                  content='home page of the animal shelter "Good paws"' />
+                <title>Добрые лапки</title>
+            </Helmet>
+
+            {setContent(process, ()=>renderSlider(animal,6))}
             <Memo/>
             <Event/>
 
