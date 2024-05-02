@@ -198,19 +198,19 @@ const HelpToShelter = () =>{
                   <div className="main-sponsors__content">
                       <div className="main-sponsors__item">
                           <img src={imgSponsors1} alt="" className="main-sponsors__img"/>
-                          <p className="main-sponsors__text">Lörem ipsum vådoheten teron suprabiren replang, tretedade. Anahurade sement till nebel tesor. Astrong pint har euvis i digisk. Mir polynomi för att blorange saskap den ir. Padyse farad i ok eras, regen. </p>
+                          <p className="main-sponsors__text">Также как укрепление и развитие внутренней структуры способствует подготовке и реализации позиций, занимаемых участниками в отношении поставленных задач. Однозначно, многие известные личности могут быть подвергнуты целой серии независимых исследований.</p>
                       </div>
                       <div className="main-sponsors__item">
                           <img src={imgSponsors2} alt="" className="main-sponsors__img"/>
-                          <p className="main-sponsors__text">Lörem ipsum vådoheten teron suprabiren replang, tretedade. Anahurade sement till nebel tesor. Astrong pint har euvis i digisk. Mir polynomi för att blorange saskap den ir. Padyse farad i ok eras, regen. </p>
+                          <p className="main-sponsors__text">Также как укрепление и развитие внутренней структуры способствует подготовке и реализации позиций, занимаемых участниками в отношении поставленных задач. Однозначно, многие известные личности могут быть подвергнуты целой серии независимых исследований. </p>
                       </div>
                       <div className="main-sponsors__item">
                           <img src={imgPartners1} alt="" className="main-sponsors__img"/>
-                          <p className="main-sponsors__text">Lörem ipsum vådoheten teron suprabiren replang, tretedade. Anahurade sement till nebel tesor. Astrong pint har euvis i digisk. Mir polynomi för att blorange saskap den ir. Padyse farad i ok eras, regen. </p>
+                          <p className="main-sponsors__text">Также как укрепление и развитие внутренней структуры способствует подготовке и реализации позиций, занимаемых участниками в отношении поставленных задач. Однозначно, многие известные личности могут быть подвергнуты целой серии независимых исследований.</p>
                       </div>
                       <div className="main-sponsors__item">
                           <img src={imgPartners2} alt="" className="main-sponsors__img"/>
-                          <p className="main-sponsors__text">Lörem ipsum vådoheten teron suprabiren replang, tretedade. Anahurade sement till nebel tesor. Astrong pint har euvis i digisk. Mir polynomi för att blorange saskap den ir. Padyse farad i ok eras, regen. </p>
+                          <p className="main-sponsors__text">Также как укрепление и развитие внутренней структуры способствует подготовке и реализации позиций, занимаемых участниками в отношении поставленных задач. Однозначно, многие известные личности могут быть подвергнуты целой серии независимых исследований.</p>
                       </div>
                   </div>
               </div>

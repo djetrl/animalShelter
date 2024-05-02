@@ -8,6 +8,9 @@ body {
     font-weight: 400;
     letter-spacing: 0.05em;
 }
+body img{
+  object-fit: cover;
+}
 
 /* Header */
 
@@ -112,6 +115,7 @@ body {
     border-radius: 5px;
     margin: 0 0 13px 0;
     height: 16.563vw;
+    object-fit: cover;
 }
 
 .slider__content {
@@ -226,6 +230,7 @@ body {
 .memo__block__img {
     min-height: 66px;
     min-width: 44px;
+
 }
 
 .memo__block__text {
@@ -248,7 +253,7 @@ body {
     gap: 70px;
 }
 .events__item img{
-  max-width: 40%;
+  max-width: 58%;
   height: 18em;
 }
 .events__item:nth-child(2n){

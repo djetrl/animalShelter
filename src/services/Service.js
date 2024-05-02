@@ -6,7 +6,6 @@ const useServices = ()=> {
     const {request, clearError, process, setProcess} = useHttp();
     const  _addres = 'http://217.71.129.139:4112/';
 
-
   const postResourse = async(url, data)=>{
     return request(url,"POST",JSON.stringify(data), {
      'Accept': 'application/json',
@@ -80,6 +79,7 @@ const useServices = ()=> {
     return await postResourse(`${_addres}api/Orders`, data );
   } 
  const _transformAnimal =(animal)=>{
+  console.log(animal.photoUrl);
   return{
     id:animal.id,
     name: animal.name,

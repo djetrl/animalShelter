@@ -9,19 +9,19 @@ const Memo = ()=>{
         <section className="memo">
         <div className="container">
             <h2 className="memo__title">“Я нашёл животное, нуждающееся в помощи”</h2>
-            <p className="memo__text">Lorem ipsum dolor sit amet consectetur. Vivamus eget scelerisque vestibulum vel ut velit ultrices vestibulum. Sed eu sit lacinia aenean amet a arcu magna. Felis tellus consequat id ipsum in lectus pretium consequat feugiat. Eget nisi pellentesque tellus velit commodo luctus mauris egestas orci.</p>
+            <p className="memo__text">В своём стремлении улучшить пользовательский опыт мы упускаем, что акционеры крупнейших компаний подвергнуты целой серии независимых исследований. Учитывая ключевые сценарии поведения, понимание сути ресурсосберегающих технологий напрямую зависит от поэтапного и последовательного развития общества.</p>
             <div className="memo__block">
                 <div className="memo__block__item">
                     <img src={attention} alt="attention" className="memo__block__img" />
-                    <p className="memo__block__text">Lorem ipsum dolor sit amet consectetur. Non id ut orci ut. Odio sociis </p>
+                    <p className="memo__block__text">Равным образом, реализация намеченных плановых заданий </p>
                 </div>
                 <div className="memo__block__item">
                     <img src={home} alt="home" className="memo__block__img" />
-                    <p className="memo__block__text">Lorem ipsum dolor sit amet consectetur. Non id ut orci ut. Odio sociis </p>
+                    <p className="memo__block__text">Равным образом, реализация намеченных плановых заданий </p>
                 </div>
                 <div className="memo__block__item">
                     <img src={phone} alt="phone" className="memo__block__img" />
-                    <p className="memo__block__text">Lorem ipsum dolor sit amet consectetur. Non id ut orci ut. Odio sociis </p>
+                    <p className="memo__block__text">Равным образом, реализация намеченных плановых заданий </p>
                 </div>
             </div>
         </div>
