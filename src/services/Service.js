@@ -55,6 +55,7 @@ const useServices = ()=> {
     const res = await request(`${_addres}api/Events`);
     return res.events.map(_transformEvents);
   }
+  
   const getAnimalAvailabilities = async ()=>{
     const res = await request(`${_addres}api/AnimalAvailabilities`);  
     return res.animalAvailabilities;
@@ -75,11 +76,22 @@ const useServices = ()=> {
   const postKind = async (data)=>{
     return await postResourse(`${_addres}api/Kinds`, data );
   } 
+  const getOrders = async ()=>{
+    const res = await  request(`${_addres}api/Orders`,);
+     return res.orders.map(_transformOrder);
+   
+  }
   const postOrders = async (data)=>{
     return await postResourse(`${_addres}api/Orders`, data );
   } 
+  const removeOrders = async (id)=>{
+    return fetch(`${_addres}api/Orders/${id}`, {
+       method: 'DELETE',
+       headers: {'accept': 'application/json'}
+     })
+ 
+   }
  const _transformAnimal =(animal)=>{
-  console.log(animal.photoUrl);
   return{
     id:animal.id,
     name: animal.name,
@@ -90,6 +102,17 @@ const useServices = ()=> {
     kindsId: animal.kindId,
     height: animal.height + " см",
     weight: animal.weight + ' кг'
+  }
+ }
+ const _transformOrder =(order)=>{
+  return{
+    id:order.id,
+    name: order.name,
+    phone: order.phone,
+    email:  order.email,
+    plannedDate:  order.plannedDate,
+    comment:  order.comment,
+    animalId:  order.animalId
   }
  }
  const _transformLuckAnimal =(animal)=>{
@@ -131,7 +154,9 @@ const useServices = ()=> {
   postLuckyAnimal,
   postEvent,
   postKind,
+  getOrders,
   postOrders,
+  removeOrders,
   removeAnimal,
   removeEvent,
   removeKind

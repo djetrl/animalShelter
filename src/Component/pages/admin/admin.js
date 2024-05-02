@@ -13,12 +13,13 @@ import KindForm from './form/kindForm';
 import './admin.css';
 
 const Admin = ()=>{
-  const {getAnimal,getKinds,getLuckAnimal ,getEvents, removeKind,getAnimalAvailabilities,removeAnimal,removeEvent,clearError, process, setProcess}= useServices();
+  const {getAnimal,getKinds,getLuckAnimal ,getEvents,getOrders,removeOrders, removeKind,getAnimalAvailabilities,removeAnimal,removeEvent,clearError, process, setProcess}= useServices();
   const [tables, setTables]= useState('Animals');
   const [data, setData] = useState([]);
   const [dataKind, setDataKind] = useState([]);
   const [dataEvent, setDataEvent] = useState([]);
   const [dataAnimal, setDataAnimal] = useState([]);
+  const [dataOrders, setDataOrders] = useState([]);
   const [animalAvailabData, setDataAnimalAvailab] = useState([]);
   const [isOpenStatus , setIsOpenStatus] = useState(false);
 
@@ -36,7 +37,14 @@ const Admin = ()=>{
       
       })
     }
-
+    const findAnimal = (animalId)=>{
+      return dataAnimal.filter(data =>{
+         if(data.id === animalId ) {
+           return data;
+         }
+       
+       })
+     }
   
   const renderTableData = useCallback(
     (NameTable)=>{
@@ -66,6 +74,9 @@ const Admin = ()=>{
               getLuckAnimal()
                 .then(onDataLoaded)
               
+            ).then(
+              getOrders().then(res => setDataOrders(res))
+              
             ).then(()=>setProcess('confirmed'))
 
   
@@ -76,6 +87,20 @@ const Admin = ()=>{
               getEvents()
               .then(res => setDataEvent(res)).then(()=>setProcess('confirmed'))
               break;
+            case 'Kinds':break;
+
+            case 'Orders':
+              getKinds().then(
+                res => setDataKind(res)
+              ).then(
+                getAnimal()
+                  .then(res=>setDataAnimal(res))
+                
+              )
+              getOrders()
+                .then(res => setDataOrders(res)).then(()=>setProcess('confirmed'))
+            
+                break;
         default:
           alert('error data');
       }
@@ -149,6 +174,54 @@ const findIndexForData=(data, id, SetFunc)=>{
             </tbody>
         </table>
           );
+      case 'Orders':
+
+          const itemsOrder =  dataOrders.map(({
+            id,
+            name,
+            phone,
+            email,
+            plannedDate,
+            comment,
+            animalId
+        }, idKey) => {
+            const thisAnimal = [...findAnimal(animalId)]
+            const thisKind = [...findKind(thisAnimal[0].kindsId)]
+            return(
+              
+              <tr key={idKey}>
+                  <td>{idKey+1}</td>
+                  <td>{name}</td>
+                  <td>{phone}</td>
+                  <td>{email}</td>
+                  <td>{plannedDate}</td>
+                  <td><p className="truncate-text--desc">{comment}</p></td>
+                  <td>{thisAnimal[0].name}</td>
+                  <td>{thisKind[0].name}</td>
+                  <td><button className="delete" onClick={()=>{removeOrders(id).then(findIndexForData(dataOrders,id, setDataOrders))}} >delete</button></td>
+              </tr>
+            )
+        })
+        return (
+          <table className="entries-list__table">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>имя</th>
+                  <th>телефон</th>
+                  <th>почта</th>
+                  <th>планируемая дата</th>
+                  <th>комментарий</th>
+                  <th>кличка животного</th>
+                  <th>вид</th>
+                  <th>управление</th>
+              </tr>
+          </thead>
+          <tbody>
+           {itemsOrder}        
+          </tbody>
+      </table>
+        );
           case 'LuckyAnimals':
   
             const itemsLuckyAnimals =  data.map(({
@@ -297,7 +370,7 @@ const selectForm = (nameTable)=>{
 
           return (
             <Modal status={isOpenStatus} setIsOpenStatus={setIsOpenStatus}  >
-                <LuckyAnimalForm dataAnimal={dataAnimal}  setIsOpenStatus={ setIsOpenStatus} data={data} setData={setData}/>
+                <LuckyAnimalForm dataAnimal={dataAnimal}  setIsOpenStatus={ setIsOpenStatus} data={data} dataOrders={dataOrders} onRemoveOrders = {removeOrders} setData={setData}/>
            </Modal>
           )
 
@@ -346,6 +419,7 @@ const selectForm = (nameTable)=>{
                             <option value="Events"> Events </option>
                             <option value="Kinds">Kinds</option>
                             <option value="LuckyAnimals">LuckyAnimals</option>
+                            <option value="Orders">Orders</option>
                         </select>
                     </form>
                 </div>
@@ -353,14 +427,14 @@ const selectForm = (nameTable)=>{
                     <h1 className="title">Управление записями</h1>
                 </div>
                 <div className="control__btn">
-                    <button data-modal className="btn control__btn--btn" onClick={()=>{setIsOpenStatus(true)}}>Добавить запись</button>
+                  {tables !=='Orders' ?   <button data-modal className="btn control__btn--btn" onClick={()=>{setIsOpenStatus(true)}}>Добавить запись</button> : null }
                 </div>
             </div>
         </div>
     </section>
     <section className="entries-list">
         <div className="container">
-        { setContent(process,()=>renderTable(tables))}    
+        {setContent(process,()=>renderTable(tables))}    
         </div>
         {selectForm(tables)}
     </section>

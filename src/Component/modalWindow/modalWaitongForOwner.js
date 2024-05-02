@@ -8,6 +8,7 @@ import '../pages/admin/admin.css';
 
 const ModalWaitongForOwner = (props)=>{
   const {postOrders}= useServices();
+  const phoneNumberRules = /^(\+[0-9]{2-15})$/;
   const formik = useFormik({
     initialValues:{
       email:'',
@@ -19,17 +20,18 @@ const ModalWaitongForOwner = (props)=>{
     },
     validationSchema:Yup.object({
       email: Yup.string().email().required(),
-      phone: Yup.number().required()
-                .typeError("That doesn't look like a phone number")
-                .positive("A phone number can't start with a minus")
-                .integer("A phone number can't include a decimal point")
-                .min(8).required(),
+      phone:Yup.number()
+                    .typeError("That doesn't look like a phone number")
+                    .positive("A phone number can't start with a minus")
+                    .integer("A phone number can't include a decimal point")
+                    .min(8).required(),
       name:Yup.string().min(2).required(),
       date:  Yup.date().required(),
       comment:Yup.string().min(25).required(),
       animal: Yup.string().required()
     }),
     onSubmit: value=>{
+      console.log(value);
       postOrders({
         name: value.name,
         phone: value.phone,
@@ -74,11 +76,11 @@ const ModalWaitongForOwner = (props)=>{
 
                     <div className="adding-entry--flex adding-entry--flex-waitingForOwner">
                           <label htmlFor="phone" className="adding-entry__item__title">телефон</label>
-                          <input type="text" name="phone" id="phone" size={11} minLength="11" maxLength="11"  {...formik.getFieldProps('phone')} style={{color: formik.errors.phone && formik.touched.phone? 'red': 'black'}} />
+                          <input type="text" name="phone" id="phone"    size={11} minLength="11" maxLength="12" {...formik.getFieldProps('phone')} style={{color: formik.errors.phone && formik.touched.phone? 'red': 'black'}} />
                     </div>
                     <div className="adding-entry--flex adding-entry--flex-waitingForOwner">
-                          <label htmlFor="phone" className="adding-entry__item__title">email</label>
-                          <input type="text"    name="phone" id="phone"   {...formik.getFieldProps('email')} style={{color: formik.errors.email && formik.touched.email? 'red': 'black'}} />
+                          <label htmlFor="email" className="adding-entry__item__title">email</label>
+                          <input type="text"    name="email" id="phone"   {...formik.getFieldProps('email')} style={{color: formik.errors.email && formik.touched.email? 'red': 'black'}} />
                     </div>
                     <div className="adding-entry--flex adding-entry--flex-waitingForOwner">
                         <label htmlFor="date" className="adding-entry__item__title">дата</label>

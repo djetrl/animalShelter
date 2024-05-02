@@ -7,7 +7,6 @@ import useServices from '../../../../services/Service';
 
 const LuckyAnimalForm = (props)=>{
 
-
   const {postLuckyAnimal}= useServices();
   const [photoForm , setPhotoForm] = useState('');
   const [commentForm , setCommentForm] = useState('');
@@ -20,11 +19,18 @@ const LuckyAnimalForm = (props)=>{
       })
       return item
   }
-
+  function getAllOrdersIndexes( indexAnimal) {
+    var indexes = [];
+    for(let i = 0; i <  props.dataOrders.length; i++){
+      if ( props.dataOrders[i].animalId ===  props.dataAnimal[indexAnimal].id){
+        indexes.push(i);
+      }
+    }
+    return indexes;
+}
   const uploadImage = async (e)=>{
     const file = e.target.files[0]
     const base64 = await convertBase64(file)
-    console.log(base64);
     setPhotoForm(base64);
   }
   const convertBase64 = (file) =>{
@@ -44,13 +50,19 @@ const LuckyAnimalForm = (props)=>{
 
   const submit = (e)=>{
     e.preventDefault()
+
+
     postLuckyAnimal(    {
     photoBase64:photoForm,
     comment:commentForm,
     adoptionDate: dateForm,
     animalId: animalIdForm,
   }).then((res)=>{
-    const index = props.dataAnimal.findIndex( el => el.id === animalIdForm)
+    const index = props.dataAnimal.findIndex( el => el.id === animalIdForm);
+    const findOrderIndex = getAllOrdersIndexes(index);
+    findOrderIndex.map(index =>{
+      props.onRemoveOrders(props.dataOrders[index].id)
+    })
     props.setData(
         [...props.data, {
             admissionDate: props.dataAnimal[index].admissionDate,

@@ -304,8 +304,9 @@ h1.title:after {
 }
 
 .card__front__img {
-    max-width: 191px;
-    max-height: 212px;
+    width: 191px;
+    object-fit: cover;
+    height: 212px;
     border-radius: 5px;
 }
 

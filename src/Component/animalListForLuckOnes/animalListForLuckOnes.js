@@ -1,15 +1,16 @@
 
 
-
-
-
-
-
-
-
+import photoNotFound from '../img/main/photoNotFound.png'
 const animalListForLuckOne = (data, func, ref)=>{
   const {photoPath, history,name, admissionDate,id,comment,adoptionDate} = data;
 
+  const onRenderImg = (photoPathLocal) =>{
+    if(photoPathLocal.replace('http://217.71.129.139:4112/', '') !== ''){
+      return <img src={photoPath} alt={name} className="card__front__img"/>
+    }else{
+      return <img src={photoNotFound} alt={name} className="card__front__img"/>
+    }
+  }
   return(
 
 
@@ -17,7 +18,7 @@ const animalListForLuckOne = (data, func, ref)=>{
            <div className="cards__card "   key={id}
            ref={el => ref[id] = el}>
               <div className="card__front">
-                  <img src={photoPath} alt={name} className="card__front__img"/>
+                  {onRenderImg(photoPath)}
                   <div className="card__front__content">
                       <h3 className="card__front__title card__title">{name}</h3>
                       <button className="card__btn card__front__btn" onClick={()=>{func(id)}}>Узнать историю</button>

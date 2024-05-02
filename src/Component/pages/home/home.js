@@ -1,11 +1,12 @@
 import Helmet from "react-helmet";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Sliders from '../../slider/slider'
 import Memo from "../../memo/memo";
 import Event from "../../event/event";
 import useServices from "../../../services/Service";
 import setContent from "../../../utils/setContent";
-
+import photoNotFound from '../../img/main/photoNotFound.png'
 const Home = ()=>{
     const [animal, setAnimal] = useState([]);
     const {getAnimal, clearError, process, setProcess}= useServices();
@@ -29,6 +30,13 @@ const Home = ()=>{
   }
 
 
+  const onRenderImg = (photoPathLocal, name) =>{
+    if(photoPathLocal.replace('http://217.71.129.139:4112/', '') !== ''){
+      return <img src={photoPathLocal} alt={name} className="slider__img"/>
+    }else{
+      return <img src={photoNotFound} alt={name} className="slider__img"/>
+    }
+  }
 
  
   const renderSlider = (arr, arrLength)=>{
@@ -38,12 +46,12 @@ const Home = ()=>{
               counter++;
               return(
                 <div className="slider__item" key={id}>
-                  <img src={photoPath} alt={name} className="slider__img" />
+                  {onRenderImg(photoPath, name)}
                   <div className="slider__content">
                       <div className="slider__content__title">{name}</div>
                       <p className="slider__content__text">{decrtiption}</p>
                   </div>
-                  <button className="slider__btn">пустить в дом</button>
+                  <Link to={'/waitingForOwner'}><button className="slider__btn">пустить в дом</button></Link>
                 </div>
                 )
                
