@@ -39,7 +39,7 @@ const About = ()=>{
                                     <img src={ img1} alt="" className="services__item--img"/>
                                 </li>
                                 <li className="services__item">
-                                    <p className="services__item--text">Медецинская помощь</p>
+                                    <p className="services__item--text">Медицинская помощь</p>
                                     <img src={ img2} alt="" className="services__item--img"/>
                                 </li>
                                 <li className="services__item">
@@ -61,7 +61,7 @@ const About = ()=>{
                     <div className="about__content">
                         <div className="about__text">
                             <p className="about__text--paragraph">«Добрые лапки» – это уникальный проект, который помогает людям и питомцам из приютов встретиться и стать друзьями на всю жизнь.</p>
-                            <p className="about__text--paragraph">Приют построен в 2018 году некомерческой организацией “Добрые лапки”. </p>
+                            <p className="about__text--paragraph">Приют построен в 2018 году некоммерческой организацией “Добрые лапки”. </p>
                             <p className="about__text--paragraph">Наш главный отдел находится в городе Новосибирске по адресу пл. Карла Маркса 69</p>
                         </div>
                         <div className="about__img">

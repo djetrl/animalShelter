@@ -17,7 +17,7 @@ const Header = ()=>{
                         <NavLink to={"/waitingForOwner"} className={ setActive } >Ждут владельца</NavLink>
                     </li>
                     <li className="list__item">
-                        <NavLink to={"/LuckyOnes"} className={ setActive } >Счасливчики</NavLink>
+                        <NavLink to={"/LuckyOnes"} className={ setActive } >Счастливчики</NavLink>
                     </li>
                     <li className="list__item">
                         <NavLink to={"/"} className={ setActive } >Главная</NavLink>
