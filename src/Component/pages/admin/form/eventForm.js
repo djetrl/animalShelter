@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useServices from '../../../../services/Service';
+import openNotification from '../../../../utils/openNotification'
 const EventForm = (props)=>{
   const {postEvent}= useServices();
   const [photoForm , setPhotoForm] = useState('');
@@ -47,7 +48,15 @@ const EventForm = (props)=>{
           link:linkForm
         }]
     )
-    
+    setPhotoForm('')
+    setDescForm('')
+    setLinkForm('')
+    props.setIsOpenStatus(false);
+      openNotification({
+        title: "Отлично!",
+        text: "Запрос успешно отправлен.",
+        type: "success"
+      });
   })
   }
 

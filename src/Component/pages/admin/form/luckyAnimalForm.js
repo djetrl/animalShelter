@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-
+import openNotification from '../../../../utils/openNotification'
 import useServices from '../../../../services/Service';
 
 
@@ -78,7 +78,16 @@ const LuckyAnimalForm = (props)=>{
             weight: props.dataAnimal[index].weight,
         }]
     )
-    
+    setPhotoForm("")
+    setCommentForm("")
+    setDateForm("")
+    setAnimalIdForm("")
+    props.setIsOpenStatus(false);
+    openNotification({
+      title: "Отлично!",
+      text: "Запрос успешно отправлен.",
+      type: "success"
+    });
   })
 
   }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import openNotification from '../../../../utils/openNotification'
 import useServices from '../../../../services/Service';
 const AnimalForm = (props)=>{
   const {postAnimal}= useServices();
@@ -37,6 +38,7 @@ const AnimalForm = (props)=>{
         }
     })
   }
+  console.log(props.setIsOpenStatus);
   const submit = (e)=>{
     e.preventDefault()
       postAnimal(
@@ -52,6 +54,7 @@ const AnimalForm = (props)=>{
       kindId: KindForm,
       animalAvailabilityId: animalAvailabilitycForm,
     }).then((res)=>{
+      
       props.setData(
           [...props.data, {
             admissionDate: dateForm.split('T')[0],
@@ -65,13 +68,27 @@ const AnimalForm = (props)=>{
             weight: weightForm,
           }]
       )
-      
+      setPhotoForm('')
+      setNameForm('')
+      setDateForm('')
+      setWeightForm('')
+      setHeightForm('')
+      setKindForm('')
+      setHistoryForm('')
+      setDescForm('')
+      setAnimalAvailabilityForm('')
+      props.setIsOpenStatus(false);
+      openNotification({
+        title: "Отлично!",
+        text: "Запрос успешно отправлен.",
+        type: "success"
+      });
     })
   }
   return(
     <form action="" method="post" className="adding-entry__form" onSubmit={e=>submit(e)}>
     <div className="adding-entry__item">
-        <h3 className="adding-entry__item__title">фоТО</h3>
+        <h3 className="adding-entry__item__title">фото</h3>
         <div className="photo">
             <img src={photoForm} className='photo-form' alt=""/>
         </div>

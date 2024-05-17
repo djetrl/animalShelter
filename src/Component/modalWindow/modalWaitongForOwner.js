@@ -1,7 +1,7 @@
 
 import  * as Yup from 'yup';
 import { useFormik} from 'formik';
-
+import openNotification from '../../utils/openNotification'
 import useServices from '../../services/Service';
 
 import '../pages/admin/admin.css';
@@ -31,7 +31,6 @@ const ModalWaitongForOwner = (props)=>{
       animal: Yup.string().required()
     }),
     onSubmit: value=>{
-      console.log(value);
       postOrders({
         name: value.name,
         phone: value.phone,
@@ -39,7 +38,16 @@ const ModalWaitongForOwner = (props)=>{
         plannedDate: value.date,
         comment: value.comment,
         animalId: value.animal
+      }).then(()=>{
+        openNotification({
+          title: "Отлично!",
+          text: "Запрос успешно отправлен.",
+          type: "success"
+        });
+        formik.resetForm()
+        hadleStatusToggle();
       })
+
     }
   })
 

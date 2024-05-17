@@ -344,6 +344,7 @@ th {
 }
 
 .btn {
+  transition: background-color .1s ease;
 }
 
 .adding-entry--flex {
@@ -393,4 +394,8 @@ textarea:focus {
 
 .add__btn--btn {
   margin: 10px 0 0;
+}
+.btn:hover{
+
+  background-color: #2e95b4;
 }

@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-
+import openNotification from '../../../../utils/openNotification'
 import useServices from '../../../../services/Service';
 
 
@@ -24,7 +24,13 @@ const KindForm = (props)=>{
           name:nameForm
         }]
     )
-    
+    setNameForm('');
+    props.setIsOpenStatus(false);
+    openNotification({
+      title: "Отлично!",
+      text: "Запрос успешно отправлен.",
+      type: "success"
+    });
   })
 
   }
