@@ -123,6 +123,7 @@ const useServices = ()=> {
     name: animal.animal.name,
     photoPath: _addres + animal.photoUrl,
     oldPhotoPath: _addres + animal.animal.photoUrl,
+    oldId:animal.animal.id,
     description: animal.animal.description,
     admissionDate: animal.animal.admissionDate.split('T')[0],
     adoptionDate: animal.adoptionDate.split('T')[0],

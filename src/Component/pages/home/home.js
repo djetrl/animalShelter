@@ -9,7 +9,7 @@ import setContent from "../../../utils/setContent";
 import photoNotFound from '../../img/main/photoNotFound.png'
 const Home = ()=>{
     const [animal, setAnimal] = useState([]);
-    const {getAnimal, clearError, process, setProcess}= useServices();
+    const {getAnimal, getLuckAnimal, clearError, process, setProcess}= useServices();
 
 
   useEffect(()=>{
@@ -21,7 +21,18 @@ const Home = ()=>{
   const updateAnimal = () => {
     clearError();
     getAnimal()
-      .then(onAnimalLoaded)
+      .then((res)=>{
+        getLuckAnimal().then((resLucky)=>{
+          let filterData = res.filter(animal=>{
+            return resLucky.every(
+              LuckAnimal =>{
+                return !animal.id.includes(LuckAnimal.oldId)
+              }
+            )
+          })
+          onAnimalLoaded(filterData)
+        })  
+      })
       .then(()=>setProcess('confirmed'));
   }
 

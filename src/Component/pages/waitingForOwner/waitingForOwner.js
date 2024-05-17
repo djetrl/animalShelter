@@ -17,7 +17,7 @@ const WaitingForOwner = ()=>{
   const [data , setData] = useState([]);
   const [kind , setKind] = useState([]);
   const [isOpenStatus , setIsOpenStatus] = useState(false);
-  const {getAnimal, getKinds, clearError, process, setProcess}= useServices();
+  const {getAnimal, getLuckAnimal, getKinds, clearError, process, setProcess}= useServices();
 
   useEffect(()=>{
     updateAnimal();
@@ -29,7 +29,18 @@ const WaitingForOwner = ()=>{
         getKinds().
         then(onKindlLoaded)
         getAnimal()
-            .then(onAnimalLoaded)
+            .then((res)=> {
+              getLuckAnimal().then((resLucky)=>{
+                let filterData = res.filter(animal=>{
+                  return resLucky.every(
+                    LuckAnimal =>{
+                      return !animal.id.includes(LuckAnimal.oldId)
+                    }
+                  )
+                })
+                onAnimalLoaded(filterData)
+              })  
+            })
             .then(()=>setProcess('confirmed'));
     }
 
